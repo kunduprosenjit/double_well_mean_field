@@ -1,4 +1,5 @@
 ## Code by Neil MacLaren, 2/24/2022
+## Corrections 10/13/2022. Old code commented with `####`. 
 
 library(igraph)
 
@@ -31,7 +32,7 @@ lowerstate <- function(x, cutoff = 2.3) {
 
 save_plots <- FALSE # TRUE
 use_noise <- FALSE # TRUE
-run_simulation <- TRUE # FALSE
+run_simulation <- FALSE # TRUE
 x_is_kdiff <- FALSE # TRUE
 
 outfile <- "./data/kdiff-D-results.rda"
@@ -144,9 +145,12 @@ df <- as.data.frame(do.call(rbind, dat))
 df$N <- sapply(rownames(df), function(x) vcount(get(x)))
 
                                         # Retrieve local min and max for doublewell function
-r <- c(1, 4, 7) # the default
-ymin <- optimize(dw, c(1, 7), r = r)$minimum
-ymax <- optimize(dw, c(1, 7), r = r, maximum = TRUE)$maximum
+#### r <- c(1, 4, 7) 
+r <- c(1, 2, 5)
+#### ymin <- optimize(dw, c(1, 7), r = r)$minimum 
+ymin <- optimize(dw, c(1, 5), r = r)$minimum
+#### ymax <- optimize(dw, c(1, 7), r = r, maximum = TRUE)$maximum
+ymax <- optimize(dw, c(1, 5), r = r, maximum = TRUE)$maximum
 
 df$k_min <- sapply(rownames(df), function(x) min(degree(get(x))))
 df$k_max <- sapply(rownames(df), function(x) max(degree(get(x))))
@@ -161,7 +165,9 @@ if(save_plots) {
 par(mar = c(5, 6, 2, 2) + 0.1)
 plot(rangeD ~ xval, data = df, pch = 1, col = "black", cex = 2, lwd = 1.75,
      axes = FALSE,
-     xlim = c(0, 2.25), ylim = range(df$rangeD),
+     #### xlim = c(0, 2.25),
+     xlim = c(0, 1.5),
+     ylim = range(df$rangeD),
      xlab = "", ylab = ""
      )
 box()

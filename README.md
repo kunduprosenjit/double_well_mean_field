@@ -11,3 +11,7 @@ Panel (a), (b), (c) and (d) of figure 2 and 4 can be generated using the code fi
 Data of panel (e), (f), (g) and (h) of figure 2 and 4 and figure 3 can be generated using figure2part_3part.m by changing the networks inside the code. Detailed instructions can be found inside the code. While running the codes all the functions provided here should be placed in the same folder.
 
 Figure 5 can be generated using the R code provided inside the folder ‘multistate_transition’. Download the whole folder to run the code. The code to run the simulations and generate the figures is in the .R files. Simulation run results are available as `.rda` files in the `./data` directory. The simulations depend on `igraph`. To run the simulations, change the `run_simulation` to `TRUE`; otherwise, the stored `.rda` files will be used to build the figures presented in the paper. Networks necessary for this analysis were drawn from the `networkdata` package and are stored as `.rda` files under `./data/networks`.
+
+## Corrections
+
+There was an error in the published version of Figure 5b. That error is described in the file "correction-221013.pdf" and the relevant `.R` file has been updated in the ‘multistate_transition’ folder.
